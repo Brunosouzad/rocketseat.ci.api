@@ -1,27 +1,26 @@
-
-name : CI
+name: CI
 
 on:
   push:
     branches:
       - main
 
-jobs: 
+jobs:
   build:
     name: 'Build and Push'
     runs-on: ubuntu-latest
     strategy:
-      matrix: 
-        node: [16,18,20]
-  
-    steps: 
+      matrix:
+        node: [16, 18, 20]
+
+    steps:
+      - uses: actions/checkout@v4
     - uses: actions/checkout@v4
 
-    - name: Setup node | ${{ matrix.node }} 
+    - name: Setup node | ${{ matrix.node }}
       uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node }} 
+        node-version: ${{ matrix.node }}
         cache: 'yarn'
     - run: yarn
     - run: yarn run test
-
