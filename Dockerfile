@@ -1,5 +1,5 @@
 # Etapa de construção
-FROM node:18 AS build
+FROM node:20 AS build
 
 # Definir o diretório de trabalho dentro do contêiner
 WORKDIR /usr/src/app
@@ -17,7 +17,7 @@ COPY . .
 RUN yarn run build
 
 # Etapa de produção
-FROM node:18-alpine
+FROM node:20-alpine
 
 # Definir o diretório de trabalho dentro do contêiner
 WORKDIR /usr/src/app
