@@ -11,8 +11,8 @@ jobs:
     name: 'Build and Push'
     runs-on: ubuntu-latest
     with: 
-        matrix: 
-          node: [16,18,20]
+      matrix: 
+       node: [16,18,20]
   
     steps: 
     - uses: actions/checkout@v4
