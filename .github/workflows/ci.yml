@@ -36,9 +36,16 @@
           with:
             username: ${{ secrets.DOCKERHUB_USERNAME }}
             password: ${{ secrets.DOCKERHUB_TOKEN }}
+        
+        - name: Build and Push
+          uses: docker/build-push-action@v5
+          with:
+            push: true
+            tags: brunodsouza12/rocketseat-ci-api:${{ steps.generate_tag.outputs.sha }}, brunodsouza12/rocketseat-ci-api:latest
+          
 
-        - name: Build docker image
-          run: docker build -t brunodsouza12/rocketseat-ci-api:${{ steps.generate_tag.outputs.sha }} .
+        #- name: Build docker image
+        #  run: docker build -t brunodsouza12/rocketseat-ci-api:${{ steps.generate_tag.outputs.sha }} .
 
-        - name: Push image
-          run: docker push brunodsouza12/rocketseat-ci-api:${{ steps.generate_tag.outputs.sha }}
+        #- name: Push image
+        # run: docker push brunodsouza12/rocketseat-ci-api:${{ steps.generate_tag.outputs.sha }}
